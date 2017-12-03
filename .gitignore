@@ -1,0 +1,13 @@
+_site/
+.sass-cache/
+.jekyll-metadata
+completer.hist
+.notes/
+.env
+_publications/
+.env
+.todolist
+.notes/
+*.pyc
+venv/
+_drafts
