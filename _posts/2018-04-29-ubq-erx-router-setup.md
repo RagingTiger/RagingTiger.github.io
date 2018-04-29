@@ -10,8 +10,7 @@ category: [compsci, network, engineering, setup]
   * [Initial Login](#initlogin)
 * [References](#references)
 
-
-<br/><br/>
+<br>
 
 ## <a name="intro"></a> [Introduction](#toc)
 While researching **enterprise routers** to build my own **enterprise LAN**,
