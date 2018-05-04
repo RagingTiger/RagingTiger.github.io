@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Ubiquiti EdgeRouter ER-X Setup Guide"
+title: "Ubiquiti EdgeRouter Setup Guide"
 date: 2018-04-29
-category: [compsci, network, engineering, setup]
+category: [compsci, network, engineering, setup, enterprise, LAN]
 ---
 ### <a name="toc"></a> Table of Contents
 * [Introduction](#intro)
@@ -17,8 +17,7 @@ While researching **enterprise routers** to build my own **enterprise LAN**,
 I became acquainted with the Ubiquiti EdgeRouter
 series.[^fn1]<sup>, </sup>[^fn2]<sup>, </sup>[^fn3] I became very impressed
 with the whole **Ubiquiti** lineup, and I invested in the **EdgeRouter
-ER-X**[^fn4], and the **UniFi AC LR AP**[^fn5] \(NOTE: setting up this access point will be discussed in a completely separate post). What follows is a
-brief description of how I setup my **EdgeRouter ER-x**. (NOTE: since
+ER-X**[^fn4], and the **UniFi AC LR AP**[^fn5] \(NOTE: setting up this access point will be discussed in a completely separate post[^fn6]). What follows is a brief description of how I setup my **EdgeRouter ER-x**. (NOTE: since
 **macOS** is the OS that I used to setup my router, that is the OS that will
 be covered in this post.)
 
@@ -50,3 +49,4 @@ You may have some issues with *this connection is not secure*, ignore those.
 [^fn3]: [EdgeMax Products Catalog](https://www.ubnt.com/products/#edgemax)
 [^fn4]: [EdgeRouter ER-X](https://www.ubnt.com/edgemax/edgerouter-x/)
 [^fn5]: [UniFi AC LR AP](https://www.ubnt.com/unifi/unifi-ap-ac-lr/)
+[^fn6]: [Ubiquiti UniFi AP Setup Guide]({{ site.baseurl }}{% link _posts/2018-05-04-ubq-unifi-ap-setup.md %})
