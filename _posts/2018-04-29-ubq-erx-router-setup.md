@@ -89,7 +89,44 @@ Now, the router will be rebooting, and loading the newly setup basic configurati
 
 ![DHCP Config]({{site.baseurl}}/assets/img/ers/dhcp_config1.png)
 
-Once the *router finishes booting up*, it will assign you an *address* (here it was 192.168.1.38), and you will be on the network. The only thing left now is to plug in the *ethernet from your modem* into the router ethernet port **eth0**. *This completes the basic configuration*. (woooooooooh!!) Your network should now be working, and all the hosts connected to ports **eth1-4** will be able to see and access each other. This is the typical router setup. From here there are some options: 1. continue with the network setup by *configuring a wireless access point* (see our guide[^fn6]), 2. begin *configuring a more advanced setup*. The latter will be covered in the next section
+Once the *router finishes booting up*, it will assign you an *address* (here it was 192.168.1.38), and you will be on the network. From here there are two options to be aware of:
+1. if you have a pre-existing network, disconnect your modem from your old router and power cycle the modem (i.e. unplug the modem, wait 30s, plug it back in)
+
+2. if no pre-existing network, simply power up the modem
+
+* **NOTE: you must disconnect the modem completely, power cycle it, and after it
+boots up reconnect it to eth0 on the router.** So, make sure you disconnect the modem before you power cycle or power it up. Then after it is up you can connect it to **eth0** on the router.
+
+*This completes the basic configuration*. (woooooooooh!!) Your network should now be working, and all the hosts connected to ports **eth1-4** will be able to see and access each other. To confirm that you are connected to the internet, go ahead and test the connection from your terminal commandline as follows (ignore the "*$*" sign and only copy the `ping google.com` into your terminal
+):
+
+```
+$ ping google.com
+PING google.com (172.217.0.78): 56 data bytes
+64 bytes from 172.217.0.78: icmp_seq=0 ttl=53 time=34.728 ms
+64 bytes from 172.217.0.78: icmp_seq=1 ttl=53 time=34.097 ms
+64 bytes from 172.217.0.78: icmp_seq=2 ttl=53 time=32.616 ms
+64 bytes from 172.217.0.78: icmp_seq=3 ttl=53 time=33.569 ms
+64 bytes from 172.217.0.78: icmp_seq=4 ttl=53 time=34.591 ms
+
+--- google.com ping statistics ---
+5 packets transmitted, 5 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 32.616/33.920/34.728/0.769 ms
+```
+What this does is send a `PING` packet to **Google's** servers at *google.com*. First your router needs to *resolve the domain name* "google.com" which it does as you can see in parentheses above (172.217.0.78). Then it sends packets to the server to test if it can route. If you get something similar to the above, you are good to go, your router is connected to the internet and resolving domain names successfully.
+
+Pull up the EdgeOS dashboard at `192.168.1.1` and you should see something
+like this:
+
+![Internet Connected]({{site.baseurl}}/assets/img/ers/wan_connected1.png)
+
+Notice how there is an **IP address** for **eth0**. This is your router's address on the **WAN** (i.e. internet). Again, this confirms the router and modem have successfully established a connection, and your internet access is
+open.
+
+To be clear, this is only the most basic configuration that allows you to use **eth0** as the internet source, and **eth1-4** as your LAN switch. But you may want to continue to configure your network (most likely to add an access point for wireless internet). From here there are some options:
+1. continue with the network setup by *configuring a wireless access point* (see our guide[^fn6])
+
+2. begin *configuring a more advanced setup*. The latter will be covered in the next section
 
 ### <a name="advconfig"></a> [Advanced Configurations](#toc)
 
