@@ -11,3 +11,4 @@ _publications/
 *.pyc
 venv/
 _drafts
+.DS_Store
