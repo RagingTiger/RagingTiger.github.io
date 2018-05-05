@@ -8,7 +8,9 @@ category: [compsci, network, engineering, setup, enterprise, LAN]
 * [Introduction](#intro)
 * [Setup](#setup)
   * [Initial Login](#initlogin)
+  * [Update Firmware](#upfirm)
   * [Basic Config](#wizard)
+  * [Internet Access](#inet)
   * [Advance Config](#advconfig)
 * [References](#references)
 
@@ -65,6 +67,8 @@ These are the *default credentials* and you will want to change them (this will 
 
 You have completed the *initial login* to the router! Now in the **next section** we will look at how to setup the *basic configuration* (i.e. get the router working with internet access and all your hosts on the same LAN). From this basic configuration we will look at how to alter the configurations for more advanced setups (e.g. multiple LANs).
 
+### <a name="upfirm"></a> [Update Firmware](#toc)
+
 ### <a name="wizard"></a> [Basic Configuration](#toc)
 To begin the basic configuration, we need to click on the **Wizards** tab in the upper right portion of the dashboard (just below the **Toolbox** button):
 
@@ -89,6 +93,7 @@ Now, the router will be rebooting, and loading the newly setup basic configurati
 
 ![DHCP Config]({{site.baseurl}}/assets/img/ers/dhcp_config1.png)
 
+### <a name="inet"></a> [Internet Access](#toc)
 Once the *router finishes booting up*, it will assign you an *address* (here it was 192.168.1.38), and you will be on the network. From here there are two options to be aware of:
 1. if you have a pre-existing network, disconnect your modem from your old router and power cycle the modem (i.e. unplug the modem, wait 30s, plug it back in)
 
