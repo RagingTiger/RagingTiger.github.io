@@ -7,6 +7,9 @@ category: [compsci, network, engineering, setup, enterprise, LAN]
 ### <a name="toc"></a> Table of Contents
 * [Introduction](#intro)
 * [Setup](#setup)
+  * [Install Locally](#local)
+  * [Dockerized UniFi](#dockerunifi)
+  * [Raspberry Pi UniFi](#unifipi)
 * [References](#references)
 
 <br>
@@ -18,7 +21,13 @@ well, it does require downloading and installing.[^fn2] This can be a bit undesi
 Luckily there is a **dockerized**[^fn3] version of the application that we will be discussing here, as well as the traditional install method, and a strategy for deploying the **docker container**[^fn4] to a **Raspberry Pi**[^fn5] server.
 
 
-## <a name="setup"></a> [Setup](#setup)
+## <a name="setup"></a> [Setup](#toc)
+
+### <a name="local"></a> [Install Locally](#toc)
+
+### <a name="dockerunifi"></a> [Dockerized UniFi](#toc)
+
+### <a name="unifirpi"></a> [Raspberry Pi UniFi](#toc)
 
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [UniFi](https://unifi-sdn.ubnt.com/#consolidate)

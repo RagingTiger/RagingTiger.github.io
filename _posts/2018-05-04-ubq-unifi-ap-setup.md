@@ -7,6 +7,7 @@ category: [compsci, network, engineering, setup, enterprise, LAN]
 ### <a name="toc"></a> Table of Contents
 * [Introduction](#intro)
 * [Setup](#setup)
+  * [UniFi Controller](#unifictrl)
 * [References](#references)
 
 <br>
@@ -18,8 +19,11 @@ While most of today's routers[^fn1] have a wireless access point builtin,
 By the way, have you set up your EdgeRouter yet? If not, go ahead and follow
 our guide[^fn8] to setup your router first, then return here to continue.
 
-## <a name="setup"></a> [Setup](#setup)
-**NOTE:** When first setting up your access point, connect it directly to your *EdgeRouter*. **DO NOT CONNECT TO A SWITCH!!!** A switch could interfere with the *DHCP* for the access point and make the access point unreachable or unresponsive to the UniFi Controller software[^fn6].
+## <a name="setup"></a> [Setup](#toc)
+**NOTE:** When first setting up your access point, *connect it directly to your EdgeRouter*. **DO NOT CONNECT TO A SWITCH!!!** A switch could interfere with the *DHCP* for the access point and make the access point unreachable or unresponsive to the UniFi Controller software.[^fn6]
+
+### <a name="unifictrl"></a> [UniFi Controller](#toc)
+
 
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Router Wikipedia](https://en.wikipedia.org/wiki/Router_(computing))
