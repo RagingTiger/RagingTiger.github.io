@@ -68,6 +68,23 @@ These are the *default credentials* and you will want to change them (this will 
 You have completed the *initial login* to the router! Now in the **next section** we will look at how to setup the *basic configuration* (i.e. get the router working with internet access and all your hosts on the same LAN). From this basic configuration we will look at how to alter the configurations for more advanced setups (e.g. multiple LANs).
 
 ### <a name="upfirm"></a> [Update Firmware](#toc)
+Before we move any further, it would be wise to take this oppurtunity to update the firmware. At the time of writing, my *EdgeRouter X* shipped with the default *firmware version v1.7.1*. After updating to the most recent version (at the time of writing v1.10.1), many more features became available (e.g. hardware offloading).
+
+To get started, navigate to the [Ubiquiti Edge Router firmware page](https://www.ubnt.com/download/edgemax/) and download *version v1.10.1* for **model no: ER-X** to your local machine (we will upload from your main laptop/desktop computer to the *Edge Router*). This is assuming that you are downloading the [firmware v1.10.1 for the Edge Router X](https://dl.ubnt.com/firmwares/edgemax/v1.10.x/ER-e50.v1.10.1.5067582.tar) (model no: ER-X). If not, then look for the firmware for your specific model.
+
+Once the file is downloaded, open a *browser to 192.168.1.1* and login to your *Edge Router* with the default username/password *ubnt/ubnt*. Once logged in, click on the alert/system tab on the bottom right hand corner as follows:
+
+![alert-system tab]({{site.baseurl}}/assets/img/ers/update_firmware1.png)
+
+Next click on the *system tab* next to the alert tab as follows:
+
+![system-tab]({{site.baseurl}}/assets/img/ers/update_firmware2.png)
+
+Finally, scroll down to the bottom of the page that opens, and click *upload a file*:
+
+![upload file]({{site.baseurl}}/assets/img/ers/update_firmware3.png)
+
+This will start off the updating process, and the router will then install, and restart. Once it reboots, you will be able to continue with *configuring* the router.
 
 ### <a name="wizard"></a> [Basic Configuration](#toc)
 To begin the basic configuration, we need to click on the **Wizards** tab in the upper right portion of the dashboard (just below the **Toolbox** button):
