@@ -30,4 +30,6 @@ is where we shall focus our explication.
 
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Problem Solving Wiki](https://en.wikipedia.org/wiki/Problem_solving)
-[^fn2]: [Search Algorithm Wiki](https://en.wikipedia.org/wiki/Search_algorithm)
+[^fn2]: [On The Nature of Problems](https://doi.org/10.1007/BF00311517)
+[^fn4]: [Five Orders of Ignorance](https://dl.acm.org/citation.cfm?id=352194)
+[^fn3]: [Search Algorithm Wiki](https://en.wikipedia.org/wiki/Search_algorithm)
