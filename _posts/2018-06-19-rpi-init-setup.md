@@ -98,13 +98,14 @@ The initial login is trivial. With the RPi booted, and connected to your
 network, you should be able to simply connect to it by issuing the following:
 ```
 $ ssh pi@raspberrypi.local
+pi@raspberrypi:~ $
 ```
 
 Upon logging in, go ahead and run this command to begin configuring some of the
 *"annoying"* setup warnings that will **only go away** if you configure them
 once and for all:
 ```
-$ sudo raspi-config
+pi@raspberrypi:~ $ sudo raspi-config
 ```
 
 After logging in initially, you will absolutely want to change the default
@@ -112,7 +113,7 @@ username and password on the RPi. To this end, there is a script[^fn5] that we c
 use to setup a new user on the RPi, and remove the old *"pi"* user. While still
 logged into your RPi, execute the following:
 ```
-$ bash -c "$(curl -fsSL https://raw.githubusercontent.com/RagingTiger/create-rpi-user/master/create-user.sh)"
+pi@raspberrypi:~ $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/RagingTiger/create-rpi-user/master/create-user.sh)"
 ```
 
 This will prompt you for a new user and password. Also, make sure to pay
@@ -126,14 +127,47 @@ After keys are copied, logout of pi user and execute the following:
   $ ssh USER@raspberrypi.local
 
 Followed by:
-  $ sudo deluser pi && sudo rm -rf /home/pi
+  USER@raspberrypi:~ $ sudo deluser pi && sudo rm -rf /home/pi
 ```
 
 Here `USER` is just a place holder for whatever username you chose.
 
 ## <a name="software"></a> [Install Software](#toc)
+In this section we will discuss some optional software that you may want to
+consider installing on the RPi.
 
 ### <a name="docker"></a> [Docker](#toc)
+Installing *Docker* on RPi[^fn6] is as simple as, logging in, running `curl`,
+and executing the subsequently downloaded *shell script*:
+```
+$ ssh pi@raspberrypi.local
+pi@raspberrypi:~ $ cd /tmp/
+pi@raspberrypi:/tmp $ curl -fsSL https://get.docker.com -o get-docker.sh
+pi@raspberrypi:/tmp $ less get-docker.sh
+pi@raspberrypi:/tmp $ sudo sh get-docker.sh
+```
+
+Let's breakdown what these commands are doing. First we are logging into the RPi
+and then changing the directory to the `/tmp` directory. Then we are executing
+the curl command (with options)[^fn7] which is downloading and saving a shell
+script named `get-docker.sh`. This script can then be opened for review using
+the `less` command (optional, but a good practice to be into). Finally the
+*get-docker.sh* shell script is being executed with root privileges using `sudo`
+and `sh`.
+
+*This will then start the shell script and install docker on your RPi!*
+
+You are now all ready to deploy and/or run containers on your RPi, but keep in
+mind one crucial caveat: containers compiled automatically on dockerhub, or
+compiled on **non ARM** CPU architectures will not run on your RPi. If you try
+to run them, your CPU (which has an ARM architecture),[^fn8] will issue an error
+similar to this:
+```
+$ standard_init_linux.go:190: exec user process caused "exec format error"
+```
+
+If you see this error, you are trying to run a container, on your machine's
+architecture, that was compiled for a *different architecture*.
 
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Raspberry Pi](https://www.raspberrypi.org/)
@@ -141,3 +175,6 @@ Here `USER` is just a place holder for whatever username you chose.
 [^fn3]: [Install Docs](https://www.raspberrypi.org/documentation/installation/installing-images/)
 [^fn4]: [Etcher Install](https://etcher.io/)
 [^fn5]: [RagingTiger/create-rpi-user](https://github.com/RagingTiger/create-rpi-user)
+[^fn6]: [Docker Install](https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script)
+[^fn7]: [Explain Shell: curl](https://explainshell.com/explain?cmd=curl+-fsSL+https%3A%2F%2Fget.docker.com+-o+get-docker.sh)
+[^fn8]: [ARM Architecture](https://en.wikipedia.org/wiki/ARM_architecture)
