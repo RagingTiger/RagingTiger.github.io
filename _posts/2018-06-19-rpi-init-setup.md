@@ -36,10 +36,6 @@ The OS can be
 You should see a page similar to the above image (notice the *"lite"* word
 appended to the file on the right).
 
-### <a name="sdcard"></a> [Format SD Card](#toc)
-With the OS file downloaded, you now simply need to format your SD card. This
-guide uses a **64Gb SD card**, and these cards require the **exFAT** format.
-
 ### <a name="writeos"></a> [Write OS to SD Card](#toc)
 
 ### <a name="enablessh"></a> [Enable SSH by Default](#toc)
