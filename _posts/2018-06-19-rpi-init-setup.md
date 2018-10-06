@@ -34,9 +34,14 @@ The OS can be
 ![os download]({{site.baseurl}}/assets/img/rpi_setup/rpi_os_download1.png)
 
 You should see a page similar to the above image (notice the *"lite"* word
-appended to the file on the right).
+appended to the file on the right). This will download the *server* edition of
+the raspibian OS (i.e. no GUI). If desired, remote desktop can be setup later
+(using VNC).
 
 ### <a name="writeos"></a> [Write OS to SD Card](#toc)
+Per the install documentation on raspberrypi.org,[^fn3] you simply need to
+download the _OS image_ ([as discussed previously](#downloados)), and download
+and run the software called *Etcher*.[^fn4]
 
 ### <a name="enablessh"></a> [Enable SSH by Default](#toc)
 
@@ -51,7 +56,7 @@ $ sudo raspi-config
 ```
 
 After logging in initially, you will absolutely want to change the default
-username and password on the RPi. To this end, there is a script[^fn3] that we can
+username and password on the RPi. To this end, there is a script[^fn5] that we can
 use to setup a new user on the RPi, and remove the old *"pi"* user. While still
 logged into your RPi, execute the following:
 ```
@@ -77,4 +82,6 @@ Here `USER` is just a place holder for whatever username you chose.
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Raspberry Pi](https://www.raspberrypi.org/)
 [^fn2]: [Raspibian OS](https://www.raspberrypi.org/downloads/raspbian/)
-[^fn3]: [RagingTiger/create-rpi-user](https://github.com/RagingTiger/create-rpi-user)
+[^fn3]: [Install Docs](https://www.raspberrypi.org/documentation/installation/installing-images/)
+[^fn4]: [Etcher Install](https://etcher.io/)
+[^fn5]: [RagingTiger/create-rpi-user](https://github.com/RagingTiger/create-rpi-user)
