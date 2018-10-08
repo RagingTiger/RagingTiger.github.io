@@ -113,7 +113,7 @@ username and password on the RPi. To this end, there is a script[^fn5] that we c
 use to setup a new user on the RPi, and remove the old *"pi"* user. While still
 logged into your RPi, execute the following:
 ```
-pi@raspberrypi:~ $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/RagingTiger/create-rpi-user/master/create-user.sh)"
+pi@raspberrypi:~ $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/RagingTiger/config-rpi/master/config-rpi.sh)"
 ```
 
 This will prompt you for a new user and password. Also, make sure to pay
@@ -174,7 +174,7 @@ architecture, that was compiled for a *different architecture*.
 [^fn2]: [Raspibian OS](https://www.raspberrypi.org/downloads/raspbian/)
 [^fn3]: [Install Docs](https://www.raspberrypi.org/documentation/installation/installing-images/)
 [^fn4]: [Etcher Install](https://etcher.io/)
-[^fn5]: [RagingTiger/create-rpi-user](https://github.com/RagingTiger/create-rpi-user)
+[^fn5]: [RagingTiger/config-rpi](https://github.com/RagingTiger/config-rpi)
 [^fn6]: [Docker Install](https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script)
 [^fn7]: [Explain Shell: curl](https://explainshell.com/explain?cmd=curl+-fsSL+https%3A%2F%2Fget.docker.com+-o+get-docker.sh)
 [^fn8]: [ARM Architecture](https://en.wikipedia.org/wiki/ARM_architecture)
