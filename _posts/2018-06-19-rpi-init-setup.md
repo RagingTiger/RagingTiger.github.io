@@ -64,6 +64,7 @@ where it is mounted (on mac, it is in the `/Volumes` directory), and create a
 file named `ssh`. For simplicity, you can follow the below command:
 ```
 $ touch /Volumes/boot/ssh
+$ diskutil umount /Volumes/boot
 ```
 
 Let's walk through this step by step. After we
@@ -72,7 +73,8 @@ we insert the SD card, it will be mounted on `macos` in the `/Volumes` directory
 as `/Volumes/boot`. Finally, to **turn on ssh** by default, we simply need to
 create a file in the root directory of the recently flashed SD card, named
 `ssh`. The touch command will merely create a file, with no contents, hence
-`touch /Volumes/boot/ssh`.
+`touch /Volumes/boot/ssh`. One last thing: unmount the SD card using the
+`diskutil umount` command. 
 
 Now **SSH** is turned on, and we can login to the **RPi** and begin setting it
 up.
