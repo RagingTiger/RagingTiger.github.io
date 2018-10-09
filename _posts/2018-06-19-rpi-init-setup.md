@@ -12,7 +12,7 @@ category: [compsci, setup, rpi]
   * [Write OS to SD Card](#writeos)
   * [Enable SSH by Default](#enablessh)
 * [Initial Boot](#bootrpi)
-  * [Initial Login](#initlogin)
+  * [Initial Setup](#initsetup)
 * [Installing Software](#software)
   * [Docker](#docker)
 * [References](#references)
@@ -74,7 +74,7 @@ as `/Volumes/boot`. Finally, to **turn on ssh** by default, we simply need to
 create a file in the root directory of the recently flashed SD card, named
 `ssh`. The touch command will merely create a file, with no contents, hence
 `touch /Volumes/boot/ssh`. One last thing: unmount the SD card using the
-`diskutil umount` command. 
+`diskutil umount` command.
 
 Now **SSH** is turned on, and we can login to the **RPi** and begin setting it
 up.
@@ -95,32 +95,19 @@ network!
 The next step is logging in, configuring the system, and optionally installing
 additional software
 
-### <a name="initlog"></a> [Initial Login](#toc)
-The initial login is trivial. With the RPi booted, and connected to your
-network, you should be able to simply connect to it by issuing the following:
+### <a name="initsetup"></a> [Initial Setup](#toc)
+Setup of the RPi is trivial using the login script we have built.[^fn5] Simply
+login to the RPi, and pull down the script to be executed in *Bash* as follows:
 ```
 $ ssh pi@raspberrypi.local
-pi@raspberrypi:~ $
-```
-
-Upon logging in, go ahead and run this command to begin configuring some of the
-*"annoying"* setup warnings that will **only go away** if you configure them
-once and for all:
-```
-pi@raspberrypi:~ $ sudo raspi-config
-```
-
-After logging in initially, you will absolutely want to change the default
-username and password on the RPi. To this end, there is a script[^fn5] that we can
-use to setup a new user on the RPi, and remove the old *"pi"* user. While still
-logged into your RPi, execute the following:
-```
 pi@raspberrypi:~ $ bash -c "$(curl -fsSL https://raw.githubusercontent.com/RagingTiger/config-rpi/master/config-rpi.sh)"
 ```
 
-This will prompt you for a new user and password. Also, make sure to pay
-attention to the end of the script. It explains what to do next to really
-complete setting your new username and password. Here is what it says:
+There are several prompts you will see: changing the default username/password,
+setting up WiFi auto-join, install docker, etc. Type `Y` to the ones you want to
+setup. If you choose to setup an SSH Key to do password-less entry, make sure to
+pay attention to the end of the script. It explains what to do next. Here is
+what it says:
 ```
 Execute on your local machine (assumes rpi is on local network):
   $ scp ~/.ssh/id_rsa.pub USER@raspberrypi.local:/home/USER/.ssh/authorized_keys
@@ -133,43 +120,6 @@ Followed by:
 ```
 
 Here `USER` is just a place holder for whatever username you chose.
-
-## <a name="software"></a> [Install Software](#toc)
-In this section we will discuss some optional software that you may want to
-consider installing on the RPi.
-
-### <a name="docker"></a> [Docker](#toc)
-Installing *Docker* on RPi[^fn6] is as simple as, logging in, running `curl`,
-and executing the subsequently downloaded *shell script*:
-```
-$ ssh pi@raspberrypi.local
-pi@raspberrypi:~ $ cd /tmp/
-pi@raspberrypi:/tmp $ curl -fsSL https://get.docker.com -o get-docker.sh
-pi@raspberrypi:/tmp $ less get-docker.sh
-pi@raspberrypi:/tmp $ sudo sh get-docker.sh
-```
-
-Let's breakdown what these commands are doing. First we are logging into the RPi
-and then changing the directory to the `/tmp` directory. Then we are executing
-the curl command (with options)[^fn7] which is downloading and saving a shell
-script named `get-docker.sh`. This script can then be opened for review using
-the `less` command (optional, but a good practice to be into). Finally the
-*get-docker.sh* shell script is being executed with root privileges using `sudo`
-and `sh`.
-
-*This will then start the shell script and install docker on your RPi!*
-
-You are now all ready to deploy and/or run containers on your RPi, but keep in
-mind one crucial caveat: containers compiled automatically on dockerhub, or
-compiled on **non ARM** CPU architectures will not run on your RPi. If you try
-to run them, your CPU (which has an ARM architecture),[^fn8] will issue an error
-similar to this:
-```
-$ standard_init_linux.go:190: exec user process caused "exec format error"
-```
-
-If you see this error, you are trying to run a container, on your machine's
-architecture, that was compiled for a *different architecture*.
 
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Raspberry Pi](https://www.raspberrypi.org/)
