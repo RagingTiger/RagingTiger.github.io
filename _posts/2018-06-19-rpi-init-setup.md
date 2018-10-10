@@ -121,6 +121,11 @@ Followed by:
 
 Here `USER` is just a place holder for whatever username you chose.
 
+`NOTE:` Also keep in mind that this script can be run again if there is a
+feature (for example to setup SSH key) that you did not select the first time,
+but you decide later you would like to enable it. Just type `Y` to the prompts
+for the features you want and have not already setup!
+
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Raspberry Pi](https://www.raspberrypi.org/)
 [^fn2]: [Raspibian OS](https://www.raspberrypi.org/downloads/raspbian/)
