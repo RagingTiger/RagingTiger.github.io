@@ -13,8 +13,6 @@ category: [compsci, setup, rpi]
   * [Enable SSH by Default](#enablessh)
 * [Initial Boot](#bootrpi)
   * [Initial Setup](#initsetup)
-* [Installing Software](#software)
-  * [Docker](#docker)
 * [References](#references)
 
 <br>
