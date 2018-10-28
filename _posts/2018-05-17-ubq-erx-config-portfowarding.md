@@ -161,11 +161,11 @@ section (if you are not already logged in). The commands you will be submitting
 are similar to this:
 ```
 ubnt@edgerouter $ configure
-ubnt@edgerouter# set port-forward rule 1 description 'Simple Description'
-ubnt@edgerouter# set port-forward rule 1 forward-to address <IP_ADDRESS>
-ubnt@edgerouter# set port-forward rule 1 forward-to port <INTERNAL_PORT>
-ubnt@edgerouter# set port-forward rule 1 original-port <EXTERNAL_PORT>
-ubnt@edgerouter# set port-forward rule 1 protocol <PROTOCOL>
+ubnt@edgerouter# set port-forward rule <NUMBER> description 'Simple Description'
+ubnt@edgerouter# set port-forward rule <NUMBER> forward-to address <IP_ADDRESS>
+ubnt@edgerouter# set port-forward rule <NUMBER> forward-to port <INTERNAL_PORT>
+ubnt@edgerouter# set port-forward rule <NUMBER> original-port <EXTERNAL_PORT>
+ubnt@edgerouter# set port-forward rule <NUMBER> protocol <PROTOCOL>
 ubnt@edgerouter# commit; save; exit
 ```
 The explanation for the above variables is simple. The *IP_ADDRESS* is simply
