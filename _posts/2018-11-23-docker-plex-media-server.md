@@ -2,7 +2,7 @@
 layout: post
 title: "Damn I Love Docker: Plex Media Server"
 date: 2018-06-19
-category: [compsci, setup, rpi]
+category: [docker, containers, devops, rpi]
 ---
 ### <a name="toc"></a> Table of Contents
 * [Introduction](#intro)
@@ -30,7 +30,7 @@ docker create \
 linuxserver/plex
 ```
 
-### <a name="armhf"></a> [ARMHF64](#toc)
+### <a name="armhf"></a> [ARMhf](#toc)
 ```
 docker create \
 	--name=plex \
@@ -45,4 +45,4 @@ docker create \
 
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Dockerized Plex AMD64](https://github.com/linuxserver/docker-plex)
-[^fn2]: [Dockerized Plex ARMHF64](https://github.com/linuxserver/docker-plex-armhf)
+[^fn2]: [Dockerized Plex ARMhf](https://github.com/linuxserver/docker-plex-armhf)
