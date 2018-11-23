@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Damn I Love Docker: Plex Media Server"
-date: 2018-06-19
+date: 2018-11-23
 category: [docker, containers, devops, rpi]
 ---
 ### <a name="toc"></a> Table of Contents
