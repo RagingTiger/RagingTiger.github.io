@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Damn I Love Docker: Miscellaneous Docker Tips"
-date: 2018-12-31
+date: 2019-01-01
 category: [docker, containers, devops, rpi, vpn]
 ---
 ### <a name="toc"></a> Table of Contents
