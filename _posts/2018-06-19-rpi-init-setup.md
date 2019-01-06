@@ -8,7 +8,6 @@ category: [compsci, setup, rpi]
 * [Introduction](#intro)
 * [Install OS](#rpios)
   * [Download OS](#downloados)
-  * [Format SD Card](#sdcard)
   * [Write OS to SD Card](#writeos)
   * [Enable SSH by Default](#enablessh)
 * [Initial Boot](#bootrpi)
