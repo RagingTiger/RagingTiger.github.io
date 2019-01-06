@@ -12,6 +12,8 @@ category: [compsci, setup, rpi]
   * [Enable SSH by Default](#enablessh)
 * [Initial Boot](#bootrpi)
   * [Initial Setup](#initsetup)
+* [Advanced Config](#advconfig)
+  * [Raspi-config](#rpiconfig)
 * [References](#references)
 
 <br>
@@ -116,6 +118,8 @@ Here `USER` and `HOST` are just place holders for whatever username and hostname
 feature (for example to setup SSH key) that you did not select the first time,
 but you decide later you would like to enable it. Just type `Y` to the prompts
 for the features you want and have not already setup!
+
+## <a name="advconfig"></a> [Advanced Config](#toc)
 
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Raspberry Pi](https://www.raspberrypi.org/)
