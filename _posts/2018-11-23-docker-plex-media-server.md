@@ -183,7 +183,7 @@ One of the best ways to backup any *Unix-like* system is through a utility
 known as `cron`. While we will not discuss in detail how to edit a `crontab`, we
 will refer you to a previous post on the subject.
 
-Instead we will show you how you an example of a `crontab` entry that will
+Instead we will show you an example of a `crontab` entry that will
 backup the external drive containing all your media files and Plex data to
 another external drive:
 ```
