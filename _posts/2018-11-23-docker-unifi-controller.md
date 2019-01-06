@@ -33,6 +33,7 @@ docker create \
 ```
 
 ### <a name="armhf"></a> [ARMhf](#toc)
+To run the dockerized UniFi Controller on an armhf device (like a Raspberry Pi),
 ```
 docker create \
   --name=unifi \
