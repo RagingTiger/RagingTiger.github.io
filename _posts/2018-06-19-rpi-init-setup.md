@@ -107,16 +107,10 @@ pay attention to the end of the script. It explains what to do next. Here is
 what it says:
 ```
 Execute on your local machine (assumes rpi is on local network):
-  $ scp ~/.ssh/id_rsa.pub USER@raspberrypi.local:/home/USER/.ssh/authorized_keys
-
-After keys are copied, logout of pi user and execute the following:
-  $ ssh USER@raspberrypi.local
-
-Followed by:
-  USER@raspberrypi:~ $ sudo deluser pi && sudo rm -rf /home/pi
+  $ scp ~/.ssh/id_rsa.pub USER@HOST.local:/home/USER/.ssh/authorized_keys
 ```
-
-Here `USER` is just a place holder for whatever username you chose.
+Here `USER` and `HOST` are just place holders for whatever username and hostname
+, respectively, that you have chosen.
 
 `NOTE:` Also keep in mind that this script can be run again if there is a
 feature (for example to setup SSH key) that you did not select the first time,
