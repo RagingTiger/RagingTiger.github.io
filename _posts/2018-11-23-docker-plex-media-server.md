@@ -222,5 +222,5 @@ Plex data and media, will be copied to the drive at `/mnt/PIBACKUP`
 [^fn7]: [ARM Wikipedia](https://en.wikipedia.org/wiki/ARM_architecture)
 [^fn8]: [Dockerized Plex ARMhf](https://github.com/linuxserver/docker-plex-armhf)
 [^fn9]: [HDD vs. Micro SD Card](https://www.reddit.com/r/raspberry_pi/comments/6uauel/external_hdd_vs_big_sd_card_for_rpi3/)
-[^fn10]: [ext4 Reformatting in Linux]({{site.baseurl}}//2018/12/08/format-disk-linux/)
+[^fn10]: [ext4 Reformatting in Linux]({{site.baseurl}}/2018/12/08/format-disk-linux/)
 [^fn11]: [Plex Basic Setup](https://support.plex.tv/articles/200288896-basic-setup-wizard/)
