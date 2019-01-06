@@ -165,14 +165,14 @@ does not support formatting). Now we are ready to add an `ext4` file system to
 this partition.
 
 ### <a name="ext4"></a> [Formatting ext4](#toc)
-Finally we only to run a simple command to complete the reformatting of the
-drive, with new partition in the `ext4` format:
+Finally we only need to run a simple command to complete the reformatting of the
+drive, with a new partition in the `ext4` format:
 ```
 $ sudo mkfs.ext4 -L OPTIONAL_DISK_NAME /dev/sda1
 ```
 This will create the `ext4` file system on the partition at `/dev/sda1` we
-create earlier. The `-L` flag will set the label of the partition to whatever
-you set as `OPTIONAL_DISK_NAME`. This optional and not necessary.
+created earlier. The `-L` flag will set the label of the partition to whatever
+you set as `OPTIONAL_DISK_NAME`. This is optional and not necessary.
 
 ## <a name="sum"></a> [Summary](#toc)
 The drive is now completely reformatted with a fresh partition. You can now
