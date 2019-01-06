@@ -178,7 +178,7 @@ you set as `OPTIONAL_DISK_NAME`. This optional and not necessary.
 The drive is now completely reformatted with a fresh partition. You can now
 mount this drive:
 ```
-$ sudo mount -t ext4 /mnt/STORAGE /dev/sda1
+$ sudo mount -t ext4 /mnt/DISK_NAME /dev/sda1
 ```
 At last, your new drive is ready to use!
 
