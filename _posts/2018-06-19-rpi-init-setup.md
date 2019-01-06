@@ -14,6 +14,8 @@ category: [compsci, setup, rpi]
   * [Initial Setup](#initsetup)
 * [Advanced Config](#advconfig)
   * [Raspi-config](#rpiconfig)
+  * [Scheduling Jobs with 'cron'](#cron)
+  * [Scheduling Jobs with 'at'](#at)
 * [References](#references)
 
 <br>
@@ -120,6 +122,14 @@ but you decide later you would like to enable it. Just type `Y` to the prompts
 for the features you want and have not already setup!
 
 ## <a name="advconfig"></a> [Advanced Config](#toc)
+Here we will cover more advanced configurations, both in terms of software and
+external hardware.
+
+###<a name="rpiconfig"></a> [Raspi-Config](#toc)
+
+###<a name="cron"></a> [Scheduling Jobs with 'crontab'](#toc)
+
+###<a name="at"></a> [Scheduling Jobs with 'at'](#toc)
 
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Raspberry Pi](https://www.raspberrypi.org/)
