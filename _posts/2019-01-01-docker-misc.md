@@ -49,7 +49,53 @@ container will (per the documentation): "Always restart the container if it
 stops." Again, check out the reference[^fn2] if you would like to know more
 details or other restart policies.
 
+## <a name="envsubst"></a> [envsubst](#toc)
+The `envsubst` command is a tool[^fn4] that will parse a file and search for
+`shell` variables to replace with their corresponding environment variable
+values and then print the original file with the variable values substituted.
+
+Below is an example `NGINX` reverse proxy configuration:
+```
+$ cat reverse_proxy.tmpl
+server {
+  listen ${LISTEN_PORT};
+  listen [::]:${LISTEN_PORT};
+
+  server_name ${SERVNAME};
+
+  location / {
+      proxy_pass ${DOMAIN}:${DOMAIN_PORT};
+  }
+}
+```
+
+If we set the `shell` values as follows:
+```
+$ LISTEN_PORT=80; SERVNAME=yourdomain.com; DOMAIN=localhost; DOMAIN_PORT=5000
+```
+
+And then run `envsubst`
+```
+$ envsubst < reverse_proxy.tmpl > reverse_proxy.conf
+```
+
+Then we will have a config file with our variables:
+```
+$ cat reverse_proxy.conf
+server {
+  listen 80;
+  listen [::]:80;
+
+  server_name yourdomain.com;
+
+  location / {
+      proxy_pass localhost:5000;
+  }
+}
+```
+
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Docker / Host Time Sync](https://stackoverflow.com/a/24568137/6926917)
 [^fn2]: [Start Containers Auotmatically](https://docs.docker.com/config/containers/start-containers-automatically/)
 [^fn3]: [Damn I Love Docker: OpenVPN]({{site.baseurl}}/2018/12/31/docker-openvpn/)
+[^fn4]: [envsubst doc](https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html)
