@@ -17,6 +17,13 @@ category: [docker, containers, devops, rpi]
   * [Backing Up Media and Data](#advconfig)
 * [References](#references)
 
+## <a name="intro"></a> [Introduction](#toc)
+When you begin to research *"how"* to stream your media collection to your
+devices, you will find one simple conclusion is unavoidable: **the most common
+way to stream media to your devices is Plex**.
+
+Plex is everywhere, and it is used *ALL the time* !!!
+
 ## <a name="install"></a> [Installing Plex](#toc)
 In the below sections, you will find the *architecture-specific* commands for
 creating a docker container of the *LinuxServer.io*[^fn1] Plex Media
