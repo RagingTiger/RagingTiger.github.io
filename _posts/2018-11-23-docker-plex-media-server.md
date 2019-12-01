@@ -8,8 +8,6 @@ category: [docker, containers, devops, rpi]
 * [Introduction](#intro)
 * [Plex Media Server](#plex)
 * [Installing Plex](#install)
-  * [AMD64 - PC Install](#amd)
-  * [armhf - Raspberry Pi Install](#armhf)
 * [Running Plex](#run)
 * [Accessing Plex](#access)
 * [Initial Configurations](#initconfig)
@@ -25,11 +23,11 @@ way to stream media to your devices is Plex**.
 Plex is everywhere, and it is used *ALL the time* !!!
 
 ## <a name="install"></a> [Installing Plex](#toc)
-In the below sections, you will find the *architecture-specific* commands for
+In the below sections, you will find the commands for
 creating a docker container of the *LinuxServer.io*[^fn1] Plex Media
-Server.[^fn2] Essentially the only differences between these two commands is the
-docker image they are using (i.e. `linuxserver/plex` and `lsioarmhf/plex` for
-AMD64 and armhf respectively).
+Server.[^fn2] Thanks to the introduction of `docker manifest` you do not need to
+worry about the architecture of your docker host (e.g. amd64 vs. arm), just
+execute the following commands on your docker host.[^fn4]
 
 Before looking at the command, it is useful to clarify and briefly explain some
 of the options and variables passed to the `docker create`[^fn3] command:
@@ -57,50 +55,8 @@ So from this information, we can see that `uid=1001`, and `gid=1001`.
 Hence when we run the `docker create` command below, we will set `PUID=1001` and
 `PGID=1001`.
 
-### <a name="amd"></a> [AMD64 - PC Install](#toc)
-What follows is the docker command for pulling the *LinuxServer.io*[^fn1]
-docker image and creating a container to run the *Plex Media Server*[^fn2] on a
-typical x86_64[^fn4] CPU architecture
-(i.e. your typical PC cpu architecture).[^fn5]
-```
-docker create \
---name=plex \
---net=host \
--e VERSION=latest \
--e PUID=<UID> -e PGID=<GID> \
--e TZ=<timezone> \
--v </path/to/library>:/config \
--v <path/to/tvseries>:/data/tvshows \
--v </path/to/movies>:/data/movies \
-linuxserver/plex
-```
-
-As an example we may create a container to run on our *Ubuntu* server from an
-earlier post[^fn6] on the Gnosis ML Server:
-```
-docker create \
---name=plex \
---net=host \
--e VERSION=latest \
--e PUID=1000 -e PGID=1000 \
--e TZ=Asia/Shanghai \
--v /srv/plex:/config \
--v /mnt/DATADRIVE/movies:/data/movies \
-linuxserver/plex
-```
-
-Notice here that we have `PUID=1000` and `PGID=1000`, `TZ=Asia/Shanghai`,
-`/srv/plex:/config`, and `mnt/DATADRIVE/movies:/data/movies`. Basically, the
-results of the `id $USER` showed `uid=1000` and `gid=1000`, hence the user
-set `PUID=1000` and `PGID=1000`, the user set the timezone to `Asia/Shanghai`,
-and has created their *Plex config dir* in `/srv/plex` with all of their media
-in a drive located at `/mnt/DATADRIVE/movies`.
-
-### <a name="armhf"></a> [ARMhf - Raspberry Pi Install](#toc)
 What follows is the docker command for pulling the *LinuxServer.io*[^fn1] docker image
-and creating a container to run the *Plex Media Server*[^fn2] on a typical
-armhf[^fn7] CPU architecture
-(i.e. your typical Raspberry Pi cpu architecture).[^fn8]
+and creating a container to run the *Plex Media Server*.
 ```
 docker create \
 --name=plex \
@@ -109,7 +65,7 @@ docker create \
 -v </path/to/library>:/config \
 -v <path/to/tvseries>:/data/tvshows \
 -v </path/to/movies>:/data/movies \
-lsioarmhf/plex
+linuxserver/plex
 ```
 
 **NOTE**: As an example for the Raspberry Pi, we will likely want to consider
@@ -131,7 +87,7 @@ docker create \
 -e TZ='America/Chicago' \
 -v /mnt/PIDRIVE/plex_config:/config \
 -v /mnt/PIDRIVE/movies:/data/movies \
-lsioarmhf/plex
+linuxserver/plex
 ```
 
 Notice here that we have `PUID=1001` and `PGID=1001`, `TZ=America/Chicago`,
@@ -143,7 +99,7 @@ drive at `/mnt/PIDRIVE/plex_config` with all of their media on the same external
 drive at `/mnt/DATADRIVE/movies`.
 
 ## <a name="run"></a> [Running Plex](#toc)
-Now that our *architecture-specific* docker container has been created, we can
+Now that our docker container has been created, we can
 simply run it with:
 ```
 $ docker start plex
@@ -223,11 +179,7 @@ Plex data and media, will be copied to the drive at `/mnt/PIBACKUP`
 [^fn1]: [LinuxServer.io](https://www.linuxserver.io/)
 [^fn2]: [Plex Media Server](https://en.wikipedia.org/wiki/Plex_(software))
 [^fn3]: [Docker Create](https://docs.docker.com/engine/reference/commandline/create/)
-[^fn4]: [x86_64 Wikipedia](https://en.wikipedia.org/wiki/X86-64)
-[^fn5]: [Dockerized Plex AMD64](https://github.com/linuxserver/docker-plex)
-[^fn6]: [Gnosis ML Server]({{site.baseurl}}/2017/11/01/gnosis/)
-[^fn7]: [ARM Wikipedia](https://en.wikipedia.org/wiki/ARM_architecture)
-[^fn8]: [Dockerized Plex ARMhf](https://github.com/linuxserver/docker-plex-armhf)
+[^fn4]: [Docker Manifest](https://docs.docker.com/engine/reference/commandline/manifest/)
 [^fn9]: [HDD vs. Micro SD Card](https://www.reddit.com/r/raspberry_pi/comments/6uauel/external_hdd_vs_big_sd_card_for_rpi3/)
 [^fn10]: [ext4 Reformatting in Linux]({{site.baseurl}}/2018/12/08/format-disk-linux/)
 [^fn11]: [Plex Basic Setup](https://support.plex.tv/articles/200288896-basic-setup-wizard/)
