@@ -33,8 +33,8 @@ in the front of your websites/web application servers and route traffic to them
 based on the `Host` field of the request.
 
 This is sometimes referred to as an `edge router` and is exactly the kind of
-task that NGINX is suited for (Note: see Traefik[^3] for a more advanced/specific
-reverse proxy for edge routing). While tools like Traefik[^3] have been
+task that NGINX is suited for (Note: see Traefik[^fn3] for a more advanced/specific
+reverse proxy for edge routing). While tools like Traefik[^fn3] have been
 developed more recently and more specifically for this problem, NGINX is a more
 `minimal viable product` and possibly more facile to deal with and setup for
 your initial reverse proxy needs.
