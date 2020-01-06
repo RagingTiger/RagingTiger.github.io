@@ -211,7 +211,7 @@ is merely an alias to `example.com`. It also requires an administrator contact
 above with comments to the right). Please see the references on the resource
 records[^fn13] and zone file[^fn12] for more info.
 
-### <a name="deploy"></a> [Docker Deploy][#toc]
+### <a name="deploy"></a> [Docker Deploy](#toc)
 Finally we are ready to deploy our local DNS server. We can deploy it simply as
 shown below:
 ```
