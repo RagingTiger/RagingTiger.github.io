@@ -16,6 +16,7 @@ category: [docker, containers, devops, reverse proxy, nginx, virtual hosting]
         * [Creating Docker Network](#ntwrk)
         * [Connecting WebApps](#ntwrk-webapp)
         * [Connecting Reverse Proxy](#ntwrk-proxy)
+    * [Testing](#test)
 * [References](#references)
 
 ## <a name="synop"></a> [Synopsis](#toc)
@@ -49,8 +50,9 @@ single host **NOT** in `swarm mode`.[^fn4] The setup for a single host docker
 environment will not distribute appropriately on a `docker swarm` because we
 are using volumes.
 
-A good example of how to set this up can be found in the repository:
-http://github.com/RagingTiger/request-router. Here is the gist of the info
+A good example of how to set this up can be found in the
+[github.com/RagingTiger/request-router](https://github.com/RagingTiger/request-router)
+repository.[^fn6] Here is the gist of the info
 shared:
 
 #### <a name="config"></a> [Configure](#config)
@@ -95,6 +97,8 @@ http {
     keepalive_timeout  65;
 
     #gzip  on;
+
+    server_names_hash_bucket_size 512;
 
     include /etc/nginx/conf.d/*.conf;
 }
@@ -246,6 +250,32 @@ on port `80`. This reverse proxy then forwards that traffic to its internal
 network (named `proxy`) that is shared by both the `blog` and `reverse-proxy`
 containers.
 
+#### <a name="test"></a> [Testing](#toc)
+With everything up and running you might ask yourself **"Well how do I know if
+this whole setup is working?"** ... to which we offer the following answer:
+```
+$ curl -H "Host: example.com" SERVER_IP_ADDRESS
+```
+`curl` (also know as `cURL`)[^fn13] is a well-known command line tool and is
+exactly the right tool for this job. Continuing with the `lifeofsarah.com`
+example for the `webblog` above, here is how we can test that domain:
+```
+$ curl -H "Host: lifeofsarah.com" 192.168.1.25
+```
+To clarify, we are setting the `$SERVER_IP_ADDRESS=192.168.1.25` which means
+this is the *physical* address of the `host machine` (i.e. where our reverse
+proxy is running). We are also setting the `Host` header (i.e. using the `-H`
+flag in `curl`) to `Host: lifeofsarah.com`. So what does this all do?
+
+When we execute the command, `curl` will send an `GET` request to the server at
+`192.168.1.25` (by default on port `80`) with the *amended* `Host` header set
+to `lifeofsarah.com`. Our reverse proxy will receive the request on port `80`
+(again by default) and check the `Host` header where it will see that it has
+a configuration for the `server_name lifeofsarah.com` and will immediately
+pass the request (i.e. proxy it) to the address in its configurations (e.g.
+`192.168.1.25:5000` as shown in the [Deploy: Simple](#simp) section or
+`http://blog` in the [Deploy: Advanced](#adv) section).
+
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Reverse Proxy](https://en.wikipedia.org/wiki/Reverse_proxy)
 [^fn2]: [NGINX Wiki](https://en.wikipedia.org/wiki/Nginx)
@@ -259,3 +289,4 @@ containers.
 [^fn10]: [HTTP Request Headers](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 [^fn11]: [Docker Network](https://docs.docker.com/network/)
 [^fn12]: [Docker DNS](https://docs.docker.com/v17.09/engine/userguide/networking/configure-dns/)
+[^fn13]: [cURL](https://en.wikipedia.org/wiki/CURL)
