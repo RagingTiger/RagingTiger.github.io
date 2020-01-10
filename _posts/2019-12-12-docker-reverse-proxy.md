@@ -10,13 +10,15 @@ category: [docker, containers, devops, reverse proxy, nginx, virtual hosting]
 * [Getting Started](#setup)
   * [Docker Single Host](#sing)
     * [Configure](#config)
-    * [Deploy](#deploy)
-      * [Simple](#simp)
-      * [Advanced](#adv)
+    * [Deploy](#depsimp)
+      * [Simple](#depsimp)
+      * [Advanced](#depadv)
         * [Creating Docker Network](#ntwrk)
         * [Connecting WebApps](#ntwrk-webapp)
         * [Connecting Reverse Proxy](#ntwrk-proxy)
-    * [Testing](#test)
+    * [Testing](#tsimp)
+      * [Simple](#tsimp)
+      * [Advanced](#tadv)
 * [References](#references)
 
 ## <a name="synop"></a> [Synopsis](#toc)
@@ -135,7 +137,7 @@ for `proxy_pass`[^fn8](seen above in the `location /` sub-block of the `server`
 block).[^fn9] Hence traffic for **example.com** will be sent to the local
 address `http://192.168.1.20` on `port 8080`.
 
-#### <a name="simp"></a> [Deploy: Simple](#toc)
+#### <a name="depsimp"></a> [Deploy: Simple](#toc)
 The simplest setup is to deploy a container built with a stable version of
 NGINX (nginx:1.15.8-alpine at the time of this publication):
 ```
@@ -167,7 +169,7 @@ so that it will read the new configuration file. Now you should be able to send
 traffic to the reverse proxy and if it gets requests with `thelifeofsarah.com`
 in the `Host` header[^fn10] it will route them to `http://192.168.25:5000`.
 
-#### <a name="adv"></a> [Deploy: Advanced](#toc)
+#### <a name="depadv"></a> [Deploy: Advanced](#toc)
 This version of the deploy follows the same steps above, except it specifically
 addresses situations where you want to run your `reverse proxy` on the same
 physical docker host as your websites/web applications. This allows us to do
@@ -250,7 +252,7 @@ on port `80`. This reverse proxy then forwards that traffic to its internal
 network (named `proxy`) that is shared by both the `blog` and `reverse-proxy`
 containers.
 
-#### <a name="test"></a> [Testing](#toc)
+#### <a name="tsimp"></a> [Testing: Simple](#toc)
 With everything up and running you might ask yourself **"Well how do I know if
 this whole setup is working?"** ... to which we offer the following answer:
 ```
@@ -275,6 +277,26 @@ a configuration for the `server_name lifeofsarah.com` and will immediately
 pass the request (i.e. proxy it) to the address in its configurations (e.g.
 `192.168.1.25:5000` as shown in the [Deploy: Simple](#simp) section or
 `http://blog` in the [Deploy: Advanced](#adv) section).
+
+#### <a name="tadv"></a> [Testing: Advanced](#toc)
+While `curl` is certainly an efficient, and simple way to test your reverse
+proxy infrastructure (including the websites running behind the reverse proxy)
+sometimes it would be nice be able to browse the websites using the `domain
+names`[^fn14] you have assigned them in the reverse proxy. But do you really
+have to register them with a domain name registrar to test? No. This is where
+running your own local `DNS Server` comes in handy.
+
+We have written a complete guide for running your own local `DNS Server` in the
+blogpost:
+[Damn I Love Docker: Local DNS With CoreDNS](({{ site.baseurl }}{% link _posts/2020-01-03-docker-loca-dns.md %})).
+Following this guide will allow you to setup your own local DNS server
+(running in Docker of course), which will allow you to create DNS records to
+point to your server. This will allow you to create records for the domain
+names you listed in the config files for the `NGINX` reverse proxy (i.e. in the
+`server_name` section). By resolving these domain names after typing them into
+your browser, your request will be routed to the host running your reverse proxy
+which will intern check the request `Host` field and route the request to
+the correct website. 
 
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Reverse Proxy](https://en.wikipedia.org/wiki/Reverse_proxy)
