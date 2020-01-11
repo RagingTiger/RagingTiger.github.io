@@ -288,7 +288,7 @@ running your own local `DNS Server` comes in handy.
 
 We have written a complete guide for running your own local `DNS Server` in the
 blogpost:
-[Damn I Love Docker: Local DNS With CoreDNS](({{ site.baseurl }}{% link _posts/2020-01-03-docker-loca-dns.md %})).
+[Damn I Love Docker: Local DNS With CoreDNS]({{ site.baseurl }}{% link _posts/2020-01-03-docker-local-dns.md %}).
 Following this guide will allow you to setup your own local DNS server
 (running in Docker of course), which will allow you to create DNS records to
 point to your server. This will allow you to create records for the domain
@@ -296,7 +296,7 @@ names you listed in the config files for the `NGINX` reverse proxy (i.e. in the
 `server_name` section). By resolving these domain names after typing them into
 your browser, your request will be routed to the host running your reverse proxy
 which will intern check the request `Host` field and route the request to
-the correct website. 
+the correct website.
 
 ## <a name="references"></a> [References](#toc)
 [^fn1]: [Reverse Proxy](https://en.wikipedia.org/wiki/Reverse_proxy)
