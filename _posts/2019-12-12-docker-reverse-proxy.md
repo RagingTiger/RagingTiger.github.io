@@ -200,7 +200,8 @@ $ docker run -d \
 Imagine this `foobar/blog` is the image for your website/web app. Then if you
 look at the options given, we passed the `proxy` network to the `docker run`
 command as the `--network` option. This will connect the `blog` container to
-the `proxy` network.
+the `proxy` network. (NOTE: by default the web server in this example runs on
+`port 5000` keep that in mind for the reverse proxy config)
 
 Pay attention to the name we gave the container, `blog`, as this name can now be
 used to directly send traffic to the `blog` container by name from any other
@@ -227,7 +228,8 @@ So basically docker allows you to use the name of a container (which you can
 specify with the `--name` option) to send traffic to that container. In this
 case, we need to configure NGINX to send traffic to our `blog` container, and we
 can use the name of that container (i.e. `blog`) as the local domain name for
-that container on the `proxy` network.
+that container on the `proxy` network (and also the port `5000` which the
+web server in this example binds to by default).
 
 Next we are going to start our reverse proxy passing this `proxy` network as a
 command line argument using the `--network` option:
