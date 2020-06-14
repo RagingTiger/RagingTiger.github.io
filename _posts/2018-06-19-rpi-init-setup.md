@@ -10,6 +10,7 @@ category: [compsci, setup, rpi]
   * [Download OS](#downloados)
   * [Write OS to SD Card](#writeos)
   * [Enable SSH by Default](#enablessh)
+  * [Enable WiFi by Default (Optional)](#enablewifi)
 * [Initial Boot](#bootrpi)
   * [Initial Setup](#initsetup)
 * [Advanced Config](#advconfig)
@@ -80,6 +81,53 @@ create a file in the root directory of the recently flashed SD card, named
 Now **SSH** is turned on, and we can login to the **RPi** and begin setting it
 up.
 
+### <a name="enablewifi"></a> [Enable WiFi by Default (Optional)](#toc)
+In some situations you may want to enable WiFi on boot (e.g. headless
+setup/install accessible over WiFi). With **Raspberry Pi Zero W** this is
+especially true, since these models lack any ethernet ports.
+
+This can be done by simply creating a file named `wpa_supplicant.conf`[^fn9] in
+the same location as the `ssh` file created in the previous section on
+[enabling SSH by default](#enablessh):
+```
+$ touch /Volumes/boot/wpa_supplicant.conf
+```
+
+To this file you will want to add a few lines:
+```
+network={
+        ssid="testing"
+        psk="testpassword"
+}
+```
+To clarify what we are adding here: `ssid` is the name of your `WiFi` network
+that you want the `RPi` to join, and `psk` is the password for the network.
+
+In `Raspberry Pi OS - Debian Buster` and above,[^fn9] there is some additional
+info you will need to add:
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+```
+Again, to clarify, the main value you need to consider changing here is the
+two character ISO 3166-1 alpha-2 country code (e.g. `country=US`).[^fn10] This
+can be changed to the necessary country code for your location.
+
+One final tip on security, after booting you can run the command
+`wpa_passphrase` to generate a hash of your password to store in the
+`wpa_supplicant.conf` file instead of storing your actual password:[^fn9]
+```
+$ wpa_passphrase testing
+# reading passphrase from stdin
+testpassword
+network={
+       ssid="testing"
+       #psk="testpassword"
+       psk=6c87473aa5e4acaa702e8e0a78b8c36fffc24e966d2f38cb50b564d508a148ea
+}
+```
+
 ## <a name="bootrpi"></a> [Initial Boot](#toc)
 Booting up is the easier part of this process. You will need:
 1. *Raspberry Pi*
@@ -140,3 +188,5 @@ external hardware.
 [^fn6]: [Docker Install](https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script)
 [^fn7]: [Explain Shell: curl](https://explainshell.com/explain?cmd=curl+-fsSL+https%3A%2F%2Fget.docker.com+-o+get-docker.sh)
 [^fn8]: [ARM Architecture](https://en.wikipedia.org/wiki/ARM_architecture)
+[^fn9]: [wpa_supplicant.conf](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)
+[^fn10]: [ISO 3166-1 alpha-2 Country Codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
